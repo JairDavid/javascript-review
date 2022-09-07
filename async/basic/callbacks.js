@@ -1,7 +1,7 @@
 //Un callback es una funcion que se pasa como argumento a una operacion asincrona
-//por lo que al finalizar una funcion asincrona, se ejecuta dicha funcion "callback"
+//por lo que al finalizar la funcion asincrona, se ejecuta dicha funcion "callback"
 
-let request = require('request')
+import request from 'request'
 
 request("https://google.com",()=>{
     console.log("callback")
