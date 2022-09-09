@@ -6,9 +6,9 @@ let petition = (url) => {
         request(url,(error, response)=>{
             if(error) return reject
 
-            resolve(response)
+            return resolve(response)
         })
     })
 }
 
-petition("https://reqres.in/api/users").then((res)=>res).then((data)=>{console.log(data)})
+petition("https://reqres.in/api/users").then(res=>res.json()).then((data)=>{console.log(data)})
