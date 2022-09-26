@@ -1,5 +1,30 @@
+const DYNAMIC_CACHE = "dynamyc-cache"
+const STATIC_CACHE = "static-cache"
+const INMUTABLE_CACHE = "inmutable_cache"
+
+
 self.addEventListener('install',(event)=>{
-    console.log("instalado")
+    console.log("service worker instalado....")
+    
+    const cacheStatic = caches.open(STATIC_CACHE)
+    .then(cache=>{
+
+        return cache.addAll([
+            "/css/style.css",
+            "/images/dog2.png",
+            "/js/app.js",
+            "/index.html"
+        ]);
+    })
+
+    const cacheInmutable =caches.open(INMUTABLE_CACHE)
+    .then(cache=>{
+        return cache.add("https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css")
+    })
+
+    event.waitUntil([cacheStatic, cacheInmutable])
+
+
 })
 
 
